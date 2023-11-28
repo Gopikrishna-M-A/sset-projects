@@ -1,95 +1,53 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+import { Card, Row, Col } from 'antd';
 
-export default function Home() {
+const ShowcaseComponent = () => {
+  // Replace the following data with your actual website details
+  const websites = [
+    {
+      title: 'Question Paper',
+      description: 'Simplify question papers',
+      imageUrl: '/images/paper.png',
+      link: 'https://papergenie.co.in/',
+    },
+    {
+      title: 'Notes App',
+      description: 'Collaborative notes',
+      imageUrl: '/images/notzzz.png',
+      link: 'https://notzzz.sset.co.in/',
+    },
+    {
+      title: 'Venue Reservation',
+      description: 'Event venue booking',
+      imageUrl: '/images/venue.png',
+      link: 'https://venue.sset.co.in/',
+    },
+    {
+      title: 'Shift Arranger',
+      description: 'Efficient scheduling',
+      imageUrl: '/images/attendance.png',
+      link: 'https://attendence.sset.co.in/',
+    },
+  ];
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className='wrapper'>
+      {websites.map((website, index) => (
+        <div key={index} >
+          <Card
+            hoverable
+            style={{ width: 240, margin: '20px 0' }}
+            cover={<img alt={website.title} src={website.imageUrl} />}
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            <Card.Meta title={website.title} description={website.description} />
+            <a href={website.link} target="_blank" rel="noopener noreferrer">
+              Visit Website
+            </a>
+          </Card>
         </div>
-      </div>
+      ))}
+    </div>
+  );
+};
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+export default ShowcaseComponent;
